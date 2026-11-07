@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dody Saputra Simanjorang — AI Engineer &amp; Fullstack Developer</title>
+    <meta name="description" content="Portfolio of Dody Saputra Simanjorang — Informatics Engineering graduate building web applications, AI systems, and LLM &amp; RAG-powered products.">
+    <meta property="og:title" content="Dody Saputra Simanjorang — AI Engineer &amp; Fullstack Developer">
+    <meta property="og:description" content="Web applications, AI systems, and LLM &amp; RAG-powered products.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="image/pasfoto-removebg.png">
+    <meta name="theme-color" content="#F3F7FF">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' shape-rendering='crispEdges'%3E%3Crect width='16' height='16' fill='%23F3F7FF'/%3E%3Cpath d='M7 1h2v4h4v2h2v2h-4v4h-2v2H7v-4H3V9H1V7h4V3h2z' fill='%232F6BFF'/%3E%3Crect x='7' y='7' width='2' height='2' fill='%23FFD43B'/%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;600;700&family=Silkscreen:wght@400;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+    <div class="scroll-progress" id="scrollProgress" aria-hidden="true"><i id="scrollBar"></i></div>
+
+    <div class="boot" id="boot" aria-label="Loading screen">
+        <div class="boot-panel">
+            <div class="boot-brand">DODY<span>.DEV</span></div>
+            <div class="boot-bar"><i id="bootBar"></i></div>
+            <p class="boot-text" id="bootText">BOOTING SYSTEM...</p>
+            <button class="boot-start" id="bootStart" type="button">PRESS START</button>
+            <p class="boot-hint">or press any key</p>
+        </div>
+    </div>
+
+    <canvas id="pixel-bg" aria-hidden="true"></canvas>
+    <div class="sky-deco" aria-hidden="true">
+        <span class="pixel-sun"></span>
+        <span class="pixel-cloud c1"></span>
+        <span class="pixel-cloud c2"></span>
+        <span class="pixel-cloud c3"></span>
+    </div>
+
+    <header class="site-header" id="siteHeader">
+        <div class="header-inner">
+            <a href="#hero" class="brand" aria-label="Dody Dev home">
+                <span class="brand-mark" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="22" height="22" shape-rendering="crispEdges">
+                        <path d="M4 2h10v2h2v2h2v12h-2v2h-2v2H4z" fill="#2F6BFF"/>
+                        <path d="M8 6h6v2h2v8h-2v2H8z" fill="#F3F7FF"/>
+                        <rect x="10" y="10" width="4" height="4" fill="#FFD43B"/>
+                    </svg>
+                </span>
+                <span class="brand-text">DODY<span>.DEV</span></span>
+            </a>
+
+            <nav class="nav" aria-label="Primary">
+                <a href="#about" class="nav-link" data-section="about">About</a>
+                <a href="#skills" class="nav-link" data-section="skills">Skills</a>
+                <a href="#projects" class="nav-link" data-section="projects">Projects</a>
+                <a href="#contact" class="nav-link" data-section="contact">Contact</a>
+                <button class="sound-toggle" id="soundToggle" data-sound-toggle type="button" aria-pressed="false" title="Toggle 8-bit sound">
+                    <svg class="sound-icon" viewBox="0 0 16 16" width="15" height="15" shape-rendering="crispEdges" aria-hidden="true">
+                        <path d="M2 6h3l3-3v10l-3-3H2z" fill="currentColor"/>
+                        <rect class="wave-1" x="10" y="5" width="1" height="6" fill="currentColor"/>
+                        <rect class="wave-2" x="12" y="3" width="1" height="10" fill="currentColor"/>
+                        <rect class="mute-slash" x="9" y="7" width="6" height="1" fill="currentColor"/>
+                    </svg>
+                    <span class="sound-label">SFX OFF</span>
+                </button>
+                <a href="#contact" class="btn btn-primary btn-sm nav-cta">Hire Me</a>
+            </nav>
+
+            <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <div class="mobile-nav" id="mobileNav">
+        <a href="#about" class="mobile-link"><span>01</span> About</a>
+        <a href="#skills" class="mobile-link"><span>02</span> Skills</a>
+        <a href="#projects" class="mobile-link"><span>03</span> Projects</a>
+        <a href="#contact" class="mobile-link"><span>04</span> Contact</a>
+        <button class="sound-toggle sound-toggle-mobile" data-sound-toggle type="button" aria-pressed="false">
+            <svg class="sound-icon" viewBox="0 0 16 16" width="15" height="15" shape-rendering="crispEdges" aria-hidden="true">
+                <path d="M2 6h3l3-3v10l-3-3H2z" fill="currentColor"/>
+                <rect class="wave-1" x="10" y="5" width="1" height="6" fill="currentColor"/>
+                <rect class="wave-2" x="12" y="3" width="1" height="10" fill="currentColor"/>
+                <rect class="mute-slash" x="9" y="7" width="6" height="1" fill="currentColor"/>
+            </svg>
+            <span class="sound-label">SFX OFF</span>
+        </button>
+        <a href="#contact" class="btn btn-primary mobile-cta">Hire Me</a>
+    </div>
+
+    <main>
+        <section id="hero" class="hero">
+            <div class="container hero-inner">
+                <div class="hero-copy">
+                    <span class="pill reveal">
+                        <span class="pill-dot"></span> AVAILABLE FOR WORK
+                    </span>
+                    <p class="hero-kicker reveal" style="--d:.04s">HELLO, I'M</p>
+                    <h1 class="hero-name reveal" style="--d:.08s" aria-label="Dody Saputra Simanjorang">
+                        <span class="hero-line" aria-hidden="true">
+                            <span class="letter" style="--i:0">D</span><span class="letter" style="--i:1">O</span><span class="letter" style="--i:2">D</span><span class="letter" style="--i:3">Y</span>
+                        </span>
+                        <span class="hero-line accent" aria-hidden="true">
+                            <span class="letter" style="--i:4">S</span><span class="letter" style="--i:5">A</span><span class="letter" style="--i:6">P</span><span class="letter" style="--i:7">U</span><span class="letter" style="--i:8">T</span><span class="letter" style="--i:9">R</span><span class="letter" style="--i:10">A</span>
+                        </span>
+                        <span class="hero-line surname" aria-hidden="true">
+                            <span class="letter" style="--i:11">S</span><span class="letter" style="--i:12">I</span><span class="letter" style="--i:13">M</span><span class="letter" style="--i:14">A</span><span class="letter" style="--i:15">N</span><span class="letter" style="--i:16">J</span><span class="letter" style="--i:17">O</span><span class="letter" style="--i:18">R</span><span class="letter" style="--i:19">A</span><span class="letter" style="--i:20">N</span><span class="letter" style="--i:21">G</span>
+                        </span>
+                    </h1>
+                    <p class="hero-role reveal" style="--d:.16s">
+                        <span id="typeRole">AI ENGINEER</span><span class="caret" aria-hidden="true"></span>
+                    </p>
+                    <p class="hero-desc reveal" style="--d:.2s">
+                        Informatics Engineering graduate building web applications, AI systems,
+                        and LLM &amp; RAG-powered products — turning ideas into software that
+                        actually works.
+                    </p>
+                    <div class="hero-actions reveal" style="--d:.24s">
+                        <a href="#projects" class="btn btn-primary">
+                            VIEW QUESTS
+                            <svg class="icon" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" shape-rendering="crispEdges"><path d="M4 12L12 4M5 4h7v7"/></svg>
+                        </a>
+                        <a href="#contact" class="btn btn-ghost">CONTACT ME</a>
+                    </div>
+                    <dl class="hero-stats reveal" style="--d:.28s">
+                        <div class="stat">
+                            <dt><span data-count="10">0</span>+</dt>
+                            <dd>PROJECTS BUILT</dd>
+                        </div>
+                        <div class="stat">
+                            <dt><span data-count="15">0</span>+</dt>
+                            <dd>TECH STACK</dd>
+                        </div>
+                        <div class="stat">
+                            <dt>LLM &middot; RAG</dt>
+                            <dd>CURRENT FOCUS</dd>
+                        </div>
+                    </dl>
+                </div>
+
+                <aside class="char-card reveal" style="--d:.16s" aria-label="Player card">
+                    <div class="char-card-top">
+                        <span class="pixel-label">PLAYER CARD</span>
+                        <span class="online"><i></i>ONLINE</span>
+                    </div>
+
+                    <div class="char-portrait">
+                        <span class="char-scanlines" aria-hidden="true"></span>
+                        <span class="char-level">LV.22</span>
+                        <img src="image/pasfoto-removebg.png" alt="Dody Saputra Simanjorang" width="429" height="582" draggable="false">
+                    </div>
+
+                    <div class="char-body">
+                        <h2>DODY SAPUTRA SIMANJORANG</h2>
+                        <p class="char-class">CLASS // AI ENGINEER</p>
+                        <ul class="char-stats">
+                            <li>
+                                <span>HP</span>
+                                <span class="bar"><i style="--v:94%"></i></span>
+                                <b>94</b>
+                            </li>
+                            <li>
+                                <span>MP</span>
+                                <span class="bar"><i style="--v:88%"></i></span>
+                                <b>88</b>
+                            </li>
+                            <li>
+                                <span>XP</span>
+                                <span class="bar"><i style="--v:76%"></i></span>
+                                <b>76</b>
+                            </li>
+                        </ul>
+                        <div class="char-tags">
+                            <span>LLM</span><span>RAG</span><span>WEB</span><span>DATA</span>
+                        </div>
+                    </div>
+
+                    <span class="char-spark" aria-hidden="true">
+                        <svg viewBox="0 0 16 16" width="26" height="26" shape-rendering="crispEdges">
+                            <path d="M7 0h2v5h5v2h2v2h-7v5H7v-5H0V7h7z" fill="#FFD43B"/>
+                            <rect x="6" y="6" width="4" height="4" fill="#2F6BFF"/>
+                        </svg>
+                    </span>
+                </aside>
+            </div>
+
+            <a href="#about" class="scroll-cue" aria-label="Scroll to About">
+                <span class="scroll-cue-text">SCROLL</span>
+                <span class="scroll-cue-arrow" aria-hidden="true">
+                    <svg viewBox="0 0 16 16" width="16" height="16" shape-rendering="crispEdges"><path d="M7 1h2v9h3v2h-2v2H8v1H6v-1H4v-2H2v-2h3V1z" fill="currentColor"/></svg>
+                </span>
+            </a>
+        </section>
+
+        <div class="ticker" aria-hidden="true">
+            <div class="ticker-track">
+                <div class="ticker-group">
+                    <span>AI ENGINEER</span><i>&#9670;</i><span>FULLSTACK</span><i>&#9670;</i>
+                    <span>LLM</span><i>&#9670;</i><span>RAG</span><i>&#9670;</i>
+                    <span>PYTHON</span><i>&#9670;</i><span>REACT</span><i>&#9670;</i>
+                    <span>FASTAPI</span><i>&#9670;</i><span>DATA</span><i>&#9670;</i>
+                    <span>OPEN TO WORK</span><i>&#9670;</i>
+                </div>
+                <div class="ticker-group">
+                    <span>AI ENGINEER</span><i>&#9670;</i><span>FULLSTACK</span><i>&#9670;</i>
+                    <span>LLM</span><i>&#9670;</i><span>RAG</span><i>&#9670;</i>
+                    <span>PYTHON</span><i>&#9670;</i><span>REACT</span><i>&#9670;</i>
+                    <span>FASTAPI</span><i>&#9670;</i><span>DATA</span><i>&#9670;</i>
+                    <span>OPEN TO WORK</span><i>&#9670;</i>
+                </div>
+            </div>
+        </div>
+
+        <section id="about" class="section section-sky">
+            <div class="container">
+                <div class="section-head reveal">
+                    <span class="pixel-label"><span class="chip">01</span> PLAYER PROFILE</span>
+                    <h2 class="section-title">The dev behind <span class="hl">the pixels.</span></h2>
+                </div>
+
+                <div class="about-grid">
+                    <div class="panel about-bio reveal">
+                        <p class="lead">
+                            I'm an Informatics Engineering graduate with a strong interest in
+                            software development, artificial intelligence, and web-based applications.
+                        </p>
+                        <p>
+                            I enjoy exploring new technologies and building digital solutions that
+                            help solve real-world problems. Over the years I've built web applications
+                            and AI systems based on Large Language Models (LLMs) and
+                            Retrieval-Augmented Generation (RAG).
+                        </p>
+                        <p>
+                            I'm continuously sharpening my skills in programming, data processing, and
+                            API integration. Right now I'm focused on growing as an AI Engineer while
+                            expanding my experience building functional, efficient, and useful products.
+                        </p>
+                        <ul class="about-tags">
+                            <li>Problem solver</li>
+                            <li>Fast learner</li>
+                            <li>Product-minded</li>
+                            <li>Detail oriented</li>
+                        </ul>
+                    </div>
+
+                    <aside class="panel about-card reveal" style="--d:.1s">
+                        <div class="card-top">
+                            <span class="pixel-label">STATUS</span>
+                            <span class="online"><i></i>ONLINE</span>
+                        </div>
+                        <ul class="fact-list">
+                            <li><span>CLASS</span><strong>AI Engineer</strong></li>
+                            <li><span>BASE</span><strong>Indonesia &middot; Remote</strong></li>
+                            <li><span>EDUCATION</span><strong>B.Sc. Informatics</strong></li>
+                            <li><span>OPEN TO</span><strong>Freelance &amp; Full-time</strong></li>
+                        </ul>
+                        <div class="mini-stats">
+                            <div class="mini-stat">
+                                <span>AI / ML</span>
+                                <span class="bar"><i style="--v:88%"></i></span>
+                            </div>
+                            <div class="mini-stat">
+                                <span>FULLSTACK</span>
+                                <span class="bar"><i style="--v:92%"></i></span>
+                            </div>
+                            <div class="mini-stat">
+                                <span>DATA</span>
+                                <span class="bar"><i style="--v:80%"></i></span>
+                            </div>
+                        </div>
+                        <a href="https://github.com/Dodysaputrasimanjorang" class="btn btn-ghost btn-block" target="_blank" rel="noopener">
+                            VIEW GITHUB
+                        </a>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="section">
+            <div class="container">
+                <div class="section-head reveal">
+                    <span class="pixel-label"><span class="chip">02</span> INVENTORY</span>
+                    <h2 class="section-title">Tools in <span class="hl">my kit.</span></h2>
+                    <p class="section-sub">
+                        The stack I use to design, build, and ship complete systems — from the
+                        database layer up to the interface.
+                    </p>
+                </div>
+
+                <div class="inventory-grid">
+                    <article class="inv-panel reveal">
+                        <div class="inv-head">
+                            <span class="inv-badge">
+                                <svg viewBox="0 0 16 16" width="18" height="18" shape-rendering="crispEdges"><path d="M5 2h2v2h2v2h2v4H9v2H7v2H5v-2H3V8H1V4h2V2h2z" fill="currentColor"/></svg>
+                            </span>
+                            <div>
+                                <h3>Fullstack</h3>
+                                <p>Frontend &middot; Backend &middot; APIs</p>
+                            </div>
+                            <span class="inv-count">10</span>
+                        </div>
+                        <ul class="inv-items">
+                            <li class="inv-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" class="tech-icon" alt="" loading="lazy"><span>JavaScript</span></li>
+                            <li class="inv-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" class="tech-icon" alt="" loading="lazy"><span>TypeScript</span></li>
+                            <li class="inv-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" class="tech-icon" alt="" loading="lazy"><span>React</span></li>
+                            <li class="inv-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" class="tech-icon" alt="" loading="lazy"><span>Next.js</span></li>
+                            <li class="inv-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" class="tech-icon" alt="" loading="lazy"><span>Node.js</span></li>
+                            <li class="inv-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original-wordmark.svg" class="tech-icon" alt="" loading="lazy"><span>Go</span></li>
+                            <li class="inv-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rust/rust-original.svg" class="tech-icon" alt="" loading="lazy"><span>Rust</span></li>
+                            <li class="inv-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" class="tech-icon" alt="" loading="lazy"><span>PostgreSQL</span></li>
+                            <li class="inv-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg" class="tech-icon" alt="" loading="lazy"><span>Redis</span></li>
+                            <li class="inv-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" class="tech-icon" alt="" loading="lazy"><span>Docker</span></li>
+                        </ul>
+                        <div class="inv-foot">
+                            <span>LOADOUT</span>
+                            <span class="bar"><i style="--v:100%"></i></span>
+                            <span class="inv-foot-num">10/10</span>
+                        </div>
+                    </article>
+
+                    <article class="inv-panel reveal" style="--d:.08s">
+                        <div class="inv-head">
+                            <span class="inv-badge inv-badge-violet">
+                                <svg viewBox="0 0 16 16" width="18" height="18" shape-rendering="crispEdges"><path d="M7 0h2v4h3v3h4v2h-4v3H9v4H7v-4H4V9H0V7h4V4h3V0z" fill="currentColor"/></svg>
+                            </span>
+                            <div>
+                                <h3>AI &amp; Machine Learning</h3>
+                                <p>LLMs &middot; RAG &middot; Deep learning</p>
+                            </div>
+                            <span class="inv-count">08</span>
+                        </div>
+                        <ul class="inv-items">
+                            <li class="inv-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" class="tech-icon" alt="" loading="lazy"><span>Python</span></li>
+                            <li class="inv-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" class="tech-icon" alt="" loading="lazy"><span>TensorFlow</span></li>
+                            <li class="inv-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" class="tech-icon" alt="" loading="lazy"><span>PyTorch</span></li>
+                            <li class="inv-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" class="tech-icon" alt="" loading="lazy"><span>NumPy</span></li>
+                            <li class="inv-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opencv/opencv-original.svg" class="tech-icon" alt="" loading="lazy"><span>OpenCV</span></li>
+                            <li class="inv-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg" class="tech-icon" alt="" loading="lazy"><span>FastAPI</span></li>
+                            <li class="inv-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jupyter/jupyter-original.svg" class="tech-icon" alt="" loading="lazy"><span>Jupyter</span></li>
+                            <li class="inv-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" class="tech-icon" alt="" loading="lazy"><span>Git</span></li>
+                        </ul>
+                        <div class="inv-foot">
+                            <span>LOADOUT</span>
+                            <span class="bar"><i style="--v:80%"></i></span>
+                            <span class="inv-foot-num">08/10</span>
+                        </div>
+                    </article>
+
+                    <article class="inv-panel reveal" style="--d:.16s">
+                        <div class="inv-head">
+                            <span class="inv-badge inv-badge-coral">
+                                <svg viewBox="0 0 16 16" width="18" height="18" shape-rendering="crispEdges"><path d="M2 2h12v2H2zM2 7h12v2H2zM2 12h12v2H2z" fill="currentColor"/></svg>
+                            </span>
+                            <div>
+                                <h3>Data &amp; Infrastructure</h3>
+                                <p>Analytics &middot; Cloud tooling</p>
+                            </div>
+                            <span class="inv-count">06</span>
+                        </div>
+                        <ul class="inv-items">
+                            <li class="inv-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" class="tech-icon" alt="" loading="lazy"><span>Pandas</span></li>
+                            <li class="inv-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apachespark/apachespark-original.svg" class="tech-icon" alt="" loading="lazy"><span>Spark</span></li>
+                            <li class="inv-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" class="tech-icon" alt="" loading="lazy"><span>SQL</span></li>
+                            <li class="inv-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg" class="tech-icon" alt="" loading="lazy"><span>Kubernetes</span></li>
+                            <li class="inv-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg" class="tech-icon" alt="" loading="lazy"><span>AWS</span></li>
+                            <li class="inv-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" class="tech-icon" alt="" loading="lazy"><span>Linux</span></li>
+                        </ul>
+                        <div class="inv-foot">
+                            <span>LOADOUT</span>
+                            <span class="bar"><i style="--v:60%"></i></span>
+                            <span class="inv-foot-num">06/10</span>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="section section-sky">
+            <div class="container">
+                <div class="section-head reveal">
+                    <span class="pixel-label"><span class="chip">03</span> QUEST LOG</span>
+                    <h2 class="section-title">Selected <span class="hl">quests.</span></h2>
+                    <p class="section-sub">
+                        A few systems I've designed and shipped — combining AI, clean architecture,
+                        and interfaces that are a pleasure to use.
+                    </p>
+                </div>
+
+                <!-- Placeholder project data: replace names, descriptions, and links with your real work. -->
+                <div class="quest-grid">
+                    <article class="quest-card reveal">
+                        <div class="quest-media quest-media-1">
+                            <span class="quest-checker" aria-hidden="true"></span>
+                            <span class="quest-difficulty" aria-label="Difficulty 4 of 5">&#9733;&#9733;&#9733;&#9733;&#9734;</span>
+                            <span class="quest-glyph" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" width="64" height="64" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="miter" shape-rendering="crispEdges"><path d="M4 6h7a4 4 0 0 1 4 4v8"/><path d="M20 6h-5a3 3 0 0 0-3 3v9"/><rect x="2" y="4" width="4" height="4"/><rect x="18" y="4" width="4" height="4"/></svg>
+                            </span>
+                            <span class="quest-badge">AI &middot; RAG</span>
+                        </div>
+                        <div class="quest-body">
+                            <div class="quest-meta"><span>QUEST 01</span><span>2026</span></div>
+                            <h3>RAGNAR — Document Intelligence</h3>
+                            <p>Chat with your own documents. A RAG pipeline with hybrid retrieval, streaming answers, and inline source citations.</p>
+                            <ul class="quest-tags"><li>Python</li><li>FastAPI</li><li>LangChain</li><li>pgvector</li><li>React</li></ul>
+                            <div class="quest-links">
+                                <a href="https://github.com/Dodysaputrasimanjorang" class="btn btn-sm btn-ghost" target="_blank" rel="noopener">GITHUB</a>
+                                <a href="#" class="btn btn-sm btn-primary">LIVE DEMO</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="quest-card reveal" style="--d:.08s">
+                        <div class="quest-media quest-media-2">
+                            <span class="quest-checker" aria-hidden="true"></span>
+                            <span class="quest-difficulty" aria-label="Difficulty 3 of 5">&#9733;&#9733;&#9733;&#9734;&#9734;</span>
+                            <span class="quest-glyph" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" width="64" height="64" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="miter" shape-rendering="crispEdges"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 12l9 4 9-4"/><path d="M3 17l9 4 9-4"/></svg>
+                            </span>
+                            <span class="quest-badge">FULLSTACK</span>
+                        </div>
+                        <div class="quest-body">
+                            <div class="quest-meta"><span>QUEST 02</span><span>2025</span></div>
+                            <h3>NeuralCommerce</h3>
+                            <p>A full-stack commerce platform with a personalized recommendation engine, real-time inventory, and a headless admin panel.</p>
+                            <ul class="quest-tags"><li>Next.js</li><li>TypeScript</li><li>PostgreSQL</li><li>Redis</li><li>TensorFlow</li></ul>
+                            <div class="quest-links">
+                                <a href="https://github.com/Dodysaputrasimanjorang" class="btn btn-sm btn-ghost" target="_blank" rel="noopener">GITHUB</a>
+                                <a href="#" class="btn btn-sm btn-primary">LIVE DEMO</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="quest-card reveal" style="--d:.16s">
+                        <div class="quest-media quest-media-3">
+                            <span class="quest-checker" aria-hidden="true"></span>
+                            <span class="quest-difficulty" aria-label="Difficulty 3 of 5">&#9733;&#9733;&#9733;&#9734;&#9734;</span>
+                            <span class="quest-glyph" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" width="64" height="64" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="miter" shape-rendering="crispEdges"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><rect x="9" y="9" width="6" height="6"/></svg>
+                            </span>
+                            <span class="quest-badge">COMPUTER VISION</span>
+                        </div>
+                        <div class="quest-body">
+                            <div class="quest-meta"><span>QUEST 03</span><span>2025</span></div>
+                            <h3>VisionSort</h3>
+                            <p>Image classification and auto-tagging pipeline with drag-and-drop uploads, batch inference, and a searchable gallery.</p>
+                            <ul class="quest-tags"><li>PyTorch</li><li>OpenCV</li><li>Flask</li><li>React</li></ul>
+                            <div class="quest-links">
+                                <a href="https://github.com/Dodysaputrasimanjorang" class="btn btn-sm btn-ghost" target="_blank" rel="noopener">GITHUB</a>
+                                <a href="#" class="btn btn-sm btn-primary">LIVE DEMO</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="quest-card reveal" style="--d:.24s">
+                        <div class="quest-media quest-media-4">
+                            <span class="quest-checker" aria-hidden="true"></span>
+                            <span class="quest-difficulty" aria-label="Difficulty 4 of 5">&#9733;&#9733;&#9733;&#9733;&#9734;</span>
+                            <span class="quest-glyph" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" width="64" height="64" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="miter" shape-rendering="crispEdges"><path d="M3 12h4l2-7 4 14 2-7h6"/></svg>
+                            </span>
+                            <span class="quest-badge">REALTIME</span>
+                        </div>
+                        <div class="quest-body">
+                            <div class="quest-meta"><span>QUEST 04</span><span>2024</span></div>
+                            <h3>DevPulse</h3>
+                            <p>Real-time telemetry dashboard streaming system metrics over WebSockets with sub-second updates and anomaly flags.</p>
+                            <ul class="quest-tags"><li>Go</li><li>WebSocket</li><li>React</li><li>InfluxDB</li></ul>
+                            <div class="quest-links">
+                                <a href="https://github.com/Dodysaputrasimanjorang" class="btn btn-sm btn-ghost" target="_blank" rel="noopener">GITHUB</a>
+                                <a href="#" class="btn btn-sm btn-primary">LIVE DEMO</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="quest-more reveal">
+                    <a href="https://github.com/Dodysaputrasimanjorang" class="btn btn-accent" target="_blank" rel="noopener">
+                        EXPLORE MORE ON GITHUB
+                        <svg class="icon" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" shape-rendering="crispEdges"><path d="M4 12L12 4M5 4h7v7"/></svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section">
+            <div class="container">
+                <div class="contact-shell reveal">
+                    <div class="contact-copy">
+                        <span class="pixel-label"><span class="chip">04</span> TRANSMISSION</span>
+                        <h2 class="section-title">Let's build<br><span class="hl">something.</span></h2>
+                        <p class="section-sub">
+                            I'm open to freelance projects, collaborations, and full-time roles.
+                            Just share your name and email — Gmail will open with a ready-to-send message.
+                        </p>
+                        <ul class="contact-list">
+                            <li>
+                                <span class="contact-label">GITHUB</span>
+                                <a href="https://github.com/Dodysaputrasimanjorang" class="contact-value" target="_blank" rel="noopener">github.com/Dodysaputrasimanjorang</a>
+                            </li>
+                            <li>
+                                <span class="contact-label">LINKEDIN</span>
+                                <a href="https://www.linkedin.com/in/dodysaputrasimanjorang" class="contact-value" target="_blank" rel="noopener">linkedin.com/in/dodysaputrasimanjorang</a>
+                            </li>
+                            <li>
+                                <span class="contact-label">LOCATION</span>
+                                <span class="contact-value">Indonesia &middot; Remote worldwide</span>
+                            </li>
+                            <li>
+                                <span class="contact-label">AVAILABILITY</span>
+                                <span class="contact-value ok"><span class="pulse-dot"></span> Open to work</span>
+                            </li>
+                        </ul>
+                        <div class="socials">
+                            <a href="https://github.com/Dodysaputrasimanjorang" target="_blank" rel="noopener">GITHUB</a>
+                            <a href="https://www.linkedin.com/in/dodysaputrasimanjorang" target="_blank" rel="noopener">LINKEDIN</a>
+                        </div>
+                    </div>
+
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-head">
+                            <h3 class="form-title">Lets unlock your <span class="hl">true potential</span></h3>
+                            <p class="form-hint">
+                                Just your name and email — Gmail will open with the message ready to send.
+                            </p>
+                        </div>
+                        <div class="field-row">
+                            <label class="field">
+                                <span>NAME</span>
+                                <input type="text" name="name" autocomplete="name" required placeholder="Your name">
+                            </label>
+                            <label class="field">
+                                <span>EMAIL</span>
+                                <input type="email" name="email" autocomplete="email" required placeholder="you@company.com">
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">
+                            SEND TRANSMISSION
+                            <svg class="icon" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" shape-rendering="crispEdges"><path d="M1 8L15 1L9 15L7 9L1 8Z"/></svg>
+                        </button>
+                        <p class="form-note" id="formNote" role="status"></p>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <a href="#hero" class="brand brand-sm" aria-label="Back to top">
+                <span class="brand-text">DODY<span>.DEV</span></span>
+            </a>
+            <p class="footer-note">&copy; <span id="year">2026</span> Dody Saputra Simanjorang. Built pixel by pixel.</p>
+            <div class="footer-links">
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+        <div class="footer-marquee" aria-hidden="true">
+            <div class="footer-marquee-track">
+                <span>DODY SAPUTRA SIMANJORANG</span><i>&#9670;</i>
+                <span>DODY SAPUTRA SIMANJORANG</span><i>&#9670;</i>
+                <span>DODY SAPUTRA SIMANJORANG</span><i>&#9670;</i>
+                <span>DODY SAPUTRA SIMANJORANG</span><i>&#9670;</i>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/pixel-bg.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
